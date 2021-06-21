@@ -1,0 +1,41 @@
+\documentclass[
+	12pt, % Font size
+	openright, % start chapters with odd pages
+	oneside, % print front and back. Opposite of twoside
+	a4paper, % paper size
+	english, % language for hyphenation
+	brazil % main language
+]{abntex2}
+
+% Packages
+\input{config/packages}
+
+% Poli-USP standards
+\input{config/epusp}
+
+% Document information
+\input{config/info}
+
+% Compile only certain chapters
+%includeonly{chapters/3.fundamentals}
+%\includeonly{chapters/4.architecture}
+%\includeonly{chapters/5.lifecycle}
+
+\begin{document}
+
+	% Pre-textual elements
+	\include{chapters/0.preamble}
+	
+	% Textual elements
+	\textual
+	\include{chapters/1.introduction}
+	\include{chapters/2.metodology}
+	\include{chapters/3.fundamentals}
+	\include{chapters/4.architecture}
+	\include{chapters/6.conclusion}
+	
+	% Post-textual elements
+	\postextual
+	\include{chapters/7.references}
+
+\end{document}

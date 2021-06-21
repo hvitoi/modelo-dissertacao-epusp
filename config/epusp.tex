@@ -1,0 +1,178 @@
+% Customizacões feitas por Bruno Fernandes
+% Dicas:
+% -> Não se esqueçam de colocar o \caption{} das tabelas e das figuras no início, antes da inserção do objeto.
+% -> Para adicionar as fontes embaixo das figuras use o comando \legend{}.
+%     Ex.: \legend{Fonte: Autor.}
+% -> A área de concentração pode ser inserida com o comando \areaconcentracao{}.
+%    Ex.: \areaconcentracao{Engenharia Elétrica - Sistemas Eletrônicos}
+% -> O tipo de trabalho pode ser definido pelo comando \tipotrabalho{}.
+%    Ex.: \tipotrabalho{Dissertação}
+% -> A falsa folha de rosto, se necessária, deve ser inserida entre a capa e a folha de rosto.
+%    Ex.: \imprimircapa \imprimirfalsafolhaderosto \imprimirfolhaderosto
+%
+% Outras dicas: https://github.com/brunocfp/capa-epusp-abntex2
+
+% Concentration area alias
+\newcommand{\areaname}{%
+	\iflanguage{brazil}{Área de Concentração:}{%
+		\iflanguage{spanish}{Área de Concentración:}{%
+			\iflanguage{english}{Area of Concentration:}{Area of Concentration:}
+		}%
+	}%
+}%
+
+\providecommand{\imprimirAreaConcentracaoRotulo}{}
+\providecommand{\imprimirAreaConcentracao}{}
+\newcommand{\areaconcentracao}[2][\areaname]%
+{\renewcommand{\imprimirAreaConcentracaoRotulo}{#1}%
+	\renewcommand{\imprimirAreaConcentracao}{#2}}
+
+% Modify cover
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+		
+		{\ABNTEXchapterfont\imprimirautor}
+		\vspace*{\dimexpr 9cm - 12pt\relax}
+		
+		%\vfill
+		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+		\vfill
+		
+		\imprimirlocal
+		\par
+		\imprimirdata
+		
+	\end{capa}
+}
+
+% Modify cover sheet
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		\center
+		
+		{\ABNTEXchapterfont\imprimirautor}
+		\vspace*{\dimexpr 9cm - 12pt\relax}
+		
+		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+		\vfill
+		
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\SingleSpacing
+				
+				\imprimirpreambulo
+				\par
+				\vspace*{2\baselineskip}
+				{\imprimirAreaConcentracaoRotulo \par \imprimirAreaConcentracao}
+				\par
+				\vspace{2\baselineskip}
+				{\imprimirorientadorRotulo~\imprimirorientador}
+				
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					{\imprimircoorientadorRotulo~\imprimircoorientador}%
+				}%
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+		
+		\imprimirlocal
+		\par
+		\imprimirdata
+		
+	\end{center}
+}
+
+% Modify false cover sheet
+\makeatother
+\makeatletter
+\newcommand{\falsafolhaderostocontent}{
+	\begin{center}
+		\center
+		
+		{\ABNTEXchapterfont\imprimirautor}
+		\vspace*{\dimexpr 9cm - 12pt\relax}
+		
+		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+		\vfill
+		
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\SingleSpacing
+				
+				\imprimirpreambulo
+				\par
+				\vspace*{2\baselineskip}
+				{\phantom{\imprimirAreaConcentracaoRotulo} \par \phantom{\imprimirAreaConcentracao}}
+				\par
+				\vspace{2\baselineskip}
+				{\phantom{\imprimirorientadorRotulo}~\phantom{\imprimirorientador}}
+				
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					{\phantom{\imprimircoorientadorRotulo}~\phantom{\imprimircoorientador}}%
+				}%
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+		
+		\imprimirlocal
+		\par
+		\imprimirdata
+		
+	\end{center}
+}
+
+% False cover sheet alias
+\newcommand{\falsafolhaderostoname}{Falsa folha de rosto}
+\newenvironment{falsafolhaderosto}[1][\falsafolhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
+\newcommand{\imprimirfalsafolhaderosto}[1][\falsafolhaderostoname]{%
+	\begin{falsafolhaderosto}
+		\falsafolhaderostocontent
+	\end{falsafolhaderosto}
+}
+
+\makeatother
+
+% Change the blue color tone
+\definecolor{blue}{RGB}{41,5,195}
+
+% PDF information
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={industria4}{rami}{ciclo-de-vida-produto}, 
+	colorlinks=true,	% false: boxed links; true: colored links
+	linkcolor=blue,	% Color of internal links
+	citecolor=blue,	% Color of links to bibliography
+	filecolor=magenta,	% Color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+
+% Place figures and tables at the top of the page when added alone in an empty page
+\makeatletter
+\setlength{\@fptop}{5pt} % set distance from top of page to first float
+\makeatother
+
+% Paragraph size
+\setlength{\parindent}{1.3cm}
+
+% Spacing between paragraphs
+%\setlength{\parskip}{0.2cm}  % try also \onelineskip
+
+% Compile the index
+\makeindex
+
+% Document language
+\selectlanguage{brazil}
+
+% Remove extra space between phrases
+\frenchspacing

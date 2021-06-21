@@ -1,0 +1,37 @@
+% Basic packages
+\usepackage{lmodern} % Latin Modern font
+\usepackage[T1]{fontenc} % font code
+\usepackage{indentfirst} % ident first paragraph of each section
+\usepackage{color} % color control
+\usepackage{graphicx} % include graphics
+\usepackage{microtype} % justification improvements
+
+% Additional packages
+\usepackage{pdfpages} % include PDFs
+\usepackage[table]{xcolor} % hexdecimal colors
+\usepackage{lipsum} % dummy text
+\usepackage{array} % additional options for tables
+\usepackage{float}
+\usepackage{bibentry}
+
+% Citation packages
+\usepackage[brazilian,hyperpageref]{backref} % bibl citations
+\usepackage[alf]{abntex2cite} % abnt citations
+
+% ---
+
+% Images folder
+\graphicspath{{images}} 
+
+% Citation package configuration
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~} % default citation format
+\renewcommand{\backref}{} % default text before the page number
+\renewcommand*{\backrefalt}[4]{ % citation text
+	\ifcase #1
+	Nenhuma citação no texto.
+	\or
+	Citado na página #2.
+	\else
+	Citado #1 vezes nas páginas #2.
+	\fi
+}
