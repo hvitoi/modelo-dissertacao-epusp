@@ -19,4 +19,8 @@
 *.vrl
 *.ilg
 *.ind
-
+*.fls
+*.fdb_latexmk
+*.synctex(busy)
+*.bak
+*.bak~

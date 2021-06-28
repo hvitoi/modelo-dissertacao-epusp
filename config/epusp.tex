@@ -1,17 +1,3 @@
-% Customizacões feitas por Bruno Fernandes
-% Dicas:
-% -> Não se esqueçam de colocar o \caption{} das tabelas e das figuras no início, antes da inserção do objeto.
-% -> Para adicionar as fontes embaixo das figuras use o comando \legend{}.
-%     Ex.: \legend{Fonte: Autor.}
-% -> A área de concentração pode ser inserida com o comando \areaconcentracao{}.
-%    Ex.: \areaconcentracao{Engenharia Elétrica - Sistemas Eletrônicos}
-% -> O tipo de trabalho pode ser definido pelo comando \tipotrabalho{}.
-%    Ex.: \tipotrabalho{Dissertação}
-% -> A falsa folha de rosto, se necessária, deve ser inserida entre a capa e a folha de rosto.
-%    Ex.: \imprimircapa \imprimirfalsafolhaderosto \imprimirfolhaderosto
-%
-% Outras dicas: https://github.com/brunocfp/capa-epusp-abntex2
-
 % Concentration area alias
 \newcommand{\areaname}{%
 	\iflanguage{brazil}{Área de Concentração:}{%
@@ -31,18 +17,18 @@
 \renewcommand{\imprimircapa}{%
 	\begin{capa}%
 		\center
-		
+
 		{\ABNTEXchapterfont\imprimirautor}
 		\vspace*{\dimexpr 9cm - 12pt\relax}
-		
+
 		%\vfill
 		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
 		\vfill
-		
+
 		\imprimirlocal
 		\par
 		\imprimirdata
-		
+
 	\end{capa}
 }
 
@@ -51,18 +37,18 @@
 \renewcommand{\folhaderostocontent}{
 	\begin{center}
 		\center
-		
+
 		{\ABNTEXchapterfont\imprimirautor}
 		\vspace*{\dimexpr 9cm - 12pt\relax}
-		
+
 		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
 		\vfill
-		
+
 		\abntex@ifnotempty{\imprimirpreambulo}{%
 			\hspace{.45\textwidth}
 			\begin{minipage}{.5\textwidth}
 				\SingleSpacing
-				
+
 				\imprimirpreambulo
 				\par
 				\vspace*{2\baselineskip}
@@ -70,18 +56,18 @@
 				\par
 				\vspace{2\baselineskip}
 				{\imprimirorientadorRotulo~\imprimirorientador}
-				
+
 				\abntex@ifnotempty{\imprimircoorientador}{%
 					{\imprimircoorientadorRotulo~\imprimircoorientador}%
 				}%
 			\end{minipage}%
 			\vspace*{\fill}
 		}%
-		
+
 		\imprimirlocal
 		\par
 		\imprimirdata
-		
+
 	\end{center}
 }
 
@@ -91,18 +77,18 @@
 \newcommand{\falsafolhaderostocontent}{
 	\begin{center}
 		\center
-		
+
 		{\ABNTEXchapterfont\imprimirautor}
 		\vspace*{\dimexpr 9cm - 12pt\relax}
-		
+
 		{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
 		\vfill
-		
+
 		\abntex@ifnotempty{\imprimirpreambulo}{%
 			\hspace{.45\textwidth}
 			\begin{minipage}{.5\textwidth}
 				\SingleSpacing
-				
+
 				\imprimirpreambulo
 				\par
 				\vspace*{2\baselineskip}
@@ -110,18 +96,18 @@
 				\par
 				\vspace{2\baselineskip}
 				{\phantom{\imprimirorientadorRotulo}~\phantom{\imprimirorientador}}
-				
+
 				\abntex@ifnotempty{\imprimircoorientador}{%
 					{\phantom{\imprimircoorientadorRotulo}~\phantom{\imprimircoorientador}}%
 				}%
 			\end{minipage}%
 			\vspace*{\fill}
 		}%
-		
+
 		\imprimirlocal
 		\par
 		\imprimirdata
-		
+
 	\end{center}
 }
 
@@ -143,11 +129,11 @@
 \makeatletter
 \hypersetup{
 	%pagebackref=true,
-	pdftitle={\@title}, 
+	pdftitle={\@title},
 	pdfauthor={\@author},
 	pdfsubject={\imprimirpreambulo},
 	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={industria4}{rami}{ciclo-de-vida-produto}, 
+	pdfkeywords={industria4}{rami}{ciclo-de-vida-produto},
 	colorlinks=true,	% false: boxed links; true: colored links
 	linkcolor=blue,	% Color of internal links
 	citecolor=blue,	% Color of links to bibliography

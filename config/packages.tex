@@ -21,17 +21,17 @@
 % ---
 
 % Images folder
-\graphicspath{{images}} 
+\graphicspath{{images}}
 
 % Citation package configuration
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~} % default citation format
 \renewcommand{\backref}{} % default text before the page number
 \renewcommand*{\backrefalt}[4]{ % citation text
 	\ifcase #1
-	Nenhuma citação no texto.
+		Nenhuma citação no texto.
 	\or
-	Citado na página #2.
+		Citado na página #2.
 	\else
-	Citado #1 vezes nas páginas #2.
+		Citado #1 vezes nas páginas #2.
 	\fi
 }
